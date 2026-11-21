@@ -474,20 +474,6 @@
 
         .footer-links a:hover { text-decoration: underline; }
 
-        @media (max-width: 600px) {
-			.nav-links {
-				flex-wrap: nowrap;
-				overflow-x: auto;
-				justify-content: flex-start;
-				scrollbar-width: none;
-			}
-			.nav-links::-webkit-scrollbar { display: none; }
-			.nav-links a { font-size: 12px; padding: 6px 10px; }
-            .container { padding: 25px 20px; }
-            h1 { font-size: 26px; }
-            .projects-grid { grid-template-columns: 1fr; }
-        }
-		
 		.top-nav {
 			display: flex;
 			align-items: center;
@@ -553,6 +539,21 @@
 			border-color: var(--primary-color);
 			transform: rotate(-15deg);
 		}
+
+        @media (max-width: 600px) {
+			.nav-links {
+				flex-wrap: nowrap;
+				overflow-x: auto;
+				justify-content: flex-start;
+				scrollbar-width: none;
+				-webkit-overflow-scrolling: touch;
+			}
+			.nav-links::-webkit-scrollbar { display: none; }
+			.nav-links a { font-size: 12px; padding: 6px 10px; }
+            .container { padding: 25px 20px; }
+            h1 { font-size: 26px; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
     </style>
 	<script>
 	(function(){
@@ -572,10 +573,9 @@
     <div class="container">
 		<nav class="top-nav">
 			<div class="nav-links">
-				<a href="#services">💻 Услуги</a>
+				<a href="#services">💻 Разработка</a>
 				<a href="#cakes">🧁 Торты</a>
-				<a href="#apps">📱 Приложения</a>
-				<a href="#games">🎮 Игры</a>
+				<a href="#apps">📱 Приложения и игры</a>
 				<a href="#pwa">🌐 PWA</a>
 <a href="#support_ruble">💛 Поддержать рублём</a>
 				<a href="#contacts">✈️ Контакты</a>
@@ -625,14 +625,14 @@
                 </div>
                 <div class="showcase-actions">
                     <a href="tg://resolve?domain=liza_crispy" class="btn btn-cake" rel="noopener">🧁 Канал и заказ @liza_crispy</a>
-<a href="./liza_crispy" class="btn btn-primary">Прайс лист и готовые работы</a>
+<a href="./liza_crispy/index.html" class="btn btn-primary">Прайс лист и готовые работы</a>
                 </div>
             </section>
         </div>
 
 
         <!-- Проекты -->
-        <h2 class="section-title" id="apps">📱 Мои приложения</h2>
+        <h2 class="section-title" id="apps">📱 Мои приложения и игры</h2>
         <div class="projects-grid">
 
             <!-- Приложение 1: Личный помощник -->
@@ -689,13 +689,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <h2 class="section-title" id="games">🎮 Мои игры</h2>
-        <div class="projects-grid">
-
-            <!-- Игра 1: Симулятор Метро -->
-            <div class="project-card">
+<div class="project-card">
                 <div class="project-icon">🚇</div>
                 <h3 class="project-name">Симулятор Метро</h3>
                 <p class="project-desc">
@@ -717,7 +711,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <!-- Веб-приложения (PWA) -->
