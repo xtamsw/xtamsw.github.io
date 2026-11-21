@@ -45,23 +45,10 @@ h1{margin:0 0 8px;font-size:28px;line-height:1.25}
 .photo-card:hover{transform:translateY(-3px);box-shadow:var(--card-hover-shadow)}
 .photo-wrap{aspect-ratio:1/1;width:100%;background:var(--promo-bg);overflow:hidden;position:relative}
 .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-.spoiler{background:var(--card-inner-bg);border:1px solid var(--border-color);border-radius:12px;padding:0 16px}
-.spoiler-summary{display:flex;align-items:center;gap:10px;list-style:none;cursor:pointer;user-select:none;padding:16px 4px;font-weight:600;color:var(--text-main)}
-.spoiler-summary::-webkit-details-marker{display:none}
-.spoiler-summary::marker{content:''}
-.spoiler-hint{font-size:13px;font-weight:400;color:var(--text-muted)}
-.spoiler-label-open{display:none}
-.spoiler[open] .spoiler-label-closed{display:none}
-.spoiler[open] .spoiler-label-open{display:inline}
-.spoiler-arrow{margin-left:auto;color:var(--primary-color);font-size:18px;line-height:1;transition:transform .2s}
-.spoiler[open] .spoiler-arrow{transform:rotate(180deg)}
-.spoiler[open] .spoiler-summary{border-bottom:1px dashed var(--border-color);margin-bottom:16px}
-.spoiler .price-gallery{padding-bottom:16px}
-.price-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.price-gallery .photo-card{flex:none;width:100%;cursor:zoom-in}
-.price-gallery .photo-wrap{aspect-ratio:auto}
-.price-gallery .photo-wrap img{height:auto;object-fit:contain}
-@media(max-width:600px){.price-gallery{grid-template-columns:1fr}}
+.price-carousel,.reviews-carousel{align-items:flex-start}
+.price-carousel .photo-wrap,.reviews-carousel .photo-wrap{aspect-ratio:auto}
+.price-carousel .photo-wrap img,.reviews-carousel .photo-wrap img{height:auto;object-fit:contain}
+.reviews-carousel .photo-card{flex:0 0 min(520px,88%)}
 .photo-info{padding:14px}
 .photo-title{font-weight:600;font-size:16px;margin:0 0 4px}
 .photo-meta{font-size:13px;color:var(--text-muted);margin:0}
@@ -119,13 +106,9 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 </section>
 
 <h2 class="section-title" id="price">💸 Цены</h2>
-<details class="spoiler" id="priceSpoiler">
-<summary class="spoiler-summary">
-    <span class="spoiler-label-closed">📋 Показать цены</span>
-    <span class="spoiler-label-open">📋 Скрыть цены</span>
-    <span class="spoiler-arrow" aria-hidden="true">▾</span>
-</summary>
-<div class="price-gallery">
+<div class="carousel-wrap">
+    <button class="carousel-btn prev" type="button" aria-label="Назад">‹</button>
+    <div class="portfolio-carousel price-carousel" id="priceCarousel">
 
     <article class="photo-card">
         <div class="photo-wrap">
@@ -170,8 +153,9 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 
     <!-- Сюда добавляй сколько угодно новых <article class="photo-card"> -->
 
+    </div>
+    <button class="carousel-btn next" type="button" aria-label="Вперёд">›</button>
 </div>
-</details>
 
 <h2 class="section-title" id="portfolio">📸 Мои работы</h2>
 <div class="carousel-wrap">
@@ -345,7 +329,7 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 <h2 class="section-title" id="comments">💬 Отзывы</h2>
 <div class="carousel-wrap">
     <button class="carousel-btn prev" type="button" aria-label="Назад">‹</button>
-    <div class="portfolio-carousel" id="commentsCarousel">
+    <div class="portfolio-carousel reviews-carousel" id="commentsCarousel">
 
         <article class="photo-card">
             <div class="photo-wrap">
@@ -565,7 +549,7 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
     document.querySelectorAll('.photo-card img').forEach(img => {
         img.addEventListener('click', e => {
             e.stopPropagation();
-            const section = img.closest('.price-gallery, .portfolio-carousel');
+            const section = img.closest('.portfolio-carousel');
             group = Array.from(section.querySelectorAll('.photo-card img'));
             show(group.indexOf(img));
             lb.classList.add('open');
