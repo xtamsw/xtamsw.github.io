@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIZA_CRISPY — прайс-лист и портфолио | Домашние торты на заказ в Москве</title>
+<meta name="description" content="Прайс-лист и портфолио домашней кондитерской LIZA_CRISPY в Москве. Бенто-торты, бисквитные торты, кейк-боксы, пирожные и зефирные цветы.">
+<style>
+:root{color-scheme:light;--primary-color:#ec4899;--primary-hover:#db2777;--bg-color:#f3f4f6;--card-bg:#ffffff;--text-main:#1f2937;--text-muted:#6b7280;--border-color:#e5e7eb;--shadow:0 4px 20px rgba(0,0,0,0.05);--card-inner-bg:#f9fafb;--nav-bg:rgba(249,250,251,0.88);--promo-bg:#fce7f3;--promo-text:#9d174d;--hero-from:#fdf2f8;--hero-to:#fff1f2;--hero-border:#fbcfe8;--btn-outline-hover:#f3f4f6;--card-hover-shadow:0 8px 25px rgba(0,0,0,0.08);--nav-offset:90px}
+[data-theme="dark"]{color-scheme:dark;--primary-color:#f472b6;--primary-hover:#ec4899;--bg-color:#0f172a;--card-bg:#1e293b;--text-main:#f1f5f9;--text-muted:#94a3b8;--border-color:#334155;--shadow:0 4px 20px rgba(0,0,0,0.4);--card-inner-bg:#0f172a;--nav-bg:rgba(30,41,59,0.88);--promo-bg:#50213d;--promo-text:#fbcfe8;--hero-from:#2d1625;--hero-to:#1e1b2e;--hero-border:#50213d;--btn-outline-hover:#334155;--card-hover-shadow:0 8px 25px rgba(0,0,0,0.5)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg-color);color:var(--text-main);line-height:1.6;margin:0;padding:20px;display:flex;justify-content:center;align-items:flex-start;min-height:100vh}
+body,.container,.top-nav,.hero-box,.price-card,.photo-card{transition:background-color .3s ease,color .3s ease,border-color .3s ease}
+.container{background:var(--card-bg);max-width:920px;width:100%;padding:32px 26px;border-radius:16px;box-shadow:var(--shadow)}
+.top-nav{display:flex;align-items:center;gap:8px;margin:0 0 26px;padding:8px 12px;background:var(--nav-bg);border:1px solid var(--border-color);border-radius:12px;position:sticky;top:12px;z-index:10;backdrop-filter:blur(8px)}
+.nav-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;flex:1;min-width:0}
+.nav-links a{display:inline-flex;align-items:center;gap:4px;padding:6px 11px;border-radius:8px;font-size:13px;font-weight:500;color:var(--text-main);text-decoration:none;white-space:nowrap;transition:background-color .2s,color .2s}
+.nav-links a:hover{background:var(--primary-color);color:#fff}
+.theme-toggle{flex-shrink:0;width:36px;height:36px;padding:0;background:transparent;border:1px solid var(--border-color);border-radius:8px;color:var(--text-main);font-size:16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background-color .2s,border-color .2s,transform .2s}
+.theme-toggle:hover{background:var(--primary-color);border-color:var(--primary-color);transform:rotate(-15deg)}
+.hero-box{background:linear-gradient(145deg,var(--hero-from) 0%,var(--hero-to) 100%);border:1px solid var(--hero-border);border-radius:14px;padding:26px;text-align:center;margin-bottom:32px}
+.hero-badge{display:inline-block;background:var(--promo-bg);color:var(--promo-text);font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:10px}
+h1{margin:0 0 8px;font-size:28px;line-height:1.25}
+.hero-sub{color:var(--text-muted);font-size:15px;max-width:600px;margin:0 auto 16px}
+.promo-pill{display:inline-block;background:var(--card-bg);border:1px dashed var(--primary-color);border-radius:10px;padding:8px 14px;font-size:13px;margin-bottom:16px}
+.promo-code{background:var(--promo-bg);color:var(--promo-text);font-weight:700;padding:2px 7px;border-radius:6px}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;padding:9px 16px;border-radius:8px;font-size:14px;font-weight:500;border:1px solid transparent;cursor:pointer;transition:background-color .2s}
+.btn-primary{background:var(--primary-color);color:#fff}
+.btn-primary:hover{background:var(--primary-hover)}
+.btn-outline{background:transparent;color:var(--text-main);border-color:var(--border-color)}
+.btn-outline:hover{background:var(--btn-outline-hover)}
+.section-title{font-size:20px;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--primary-color);display:inline-block;scroll-margin-top:var(--nav-offset)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.photo-card{background:var(--card-inner-bg);border:1px solid var(--border-color);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.photo-card:hover{transform:translateY(-3px);box-shadow:var(--card-hover-shadow)}
+.photo-wrap{aspect-ratio:1/1;width:100%;background:var(--promo-bg);overflow:hidden;position:relative}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-info{padding:14px}
+.photo-title{font-weight:600;font-size:16px;margin:0 0 4px}
+.photo-meta{font-size:13px;color:var(--text-muted);margin:0}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.price-card{background:var(--card-inner-bg);border:1px solid var(--border-color);border-radius:12px;padding:20px}
+.price-card h3{margin:0 0 12px;font-size:18px;color:var(--primary-color)}
+.price-list{list-style:none;padding:0;margin:0}
+.price-list li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-bottom:1px dashed var(--border-color);font-size:14px}
+.price-list li:last-child{border-bottom:none}
+.price-name{color:var(--text-main)}
+.price-desc{display:block;font-size:12px;color:var(--text-muted)}
+.price-val{font-weight:700;white-space:nowrap;color:var(--text-main)}
+.delivery-box{background:var(--card-inner-bg);border:1px solid var(--border-color);border-radius:12px;padding:20px;font-size:14px;scroll-margin-top:var(--nav-offset)}
+.delivery-box ul{margin:8px 0 0;padding-left:20px}
+.delivery-box li{margin-bottom:6px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95vw;max-height:88vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color);font-size:13px;color:var(--text-muted);text-align:center}
+@media(max-width:600px){.nav-links{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}.container{padding:20px 16px}h1{font-size:24px}}
+</style>
+<script>(function(){var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+<div class="container">
+<nav class="top-nav">
+<div class="nav-links">
+<a href="../index.html">← На главную</a>
+<a href="#portfolio">📸 Портфолио</a>
+<a href="#price">📋 Прайс-лист</a>
+<a href="#delivery">🚗 Доставка</a>
+</div>
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">🌙</button>
+</nav>
+
+<section class="hero-box">
+<span class="hero-badge">🧁 LIZA_CRISPY · Москва</span>
+<h1>Домашние торты и десерты на заказ</h1>
+<p class="hero-sub">Натуральные ингредиенты, индивидуальный дизайн и бережная доставка к вашему празднику или просто к чаю.</p>
+<div class="promo-pill">🎁 Скидка <strong>10%</strong> на первый заказ по промокоду <span class="promo-code">CRISPY10</span></div>
+<div class="actions">
+<a href="tg://resolve?domain=liza_crispy" class="btn btn-primary">✈️ Заказать в Telegram (@liza_crispy)</a>
+<a href="https://flowwow.com" class="btn btn-outline" target="_blank" rel="noopener">🌸 Витрина на FlowWow</a>
+</div>
+</section>
+
+<h2 class="section-title" id="portfolio">📸 Примеры работ (Портфолио)</h2>
+<div class="portfolio-grid">
+
+<article class="photo-card">
+<div class="photo-wrap">
+<img src="img/cake1.jpg" alt="Бенто-торт с надписью" loading="lazy">
+</div>
+<div class="photo-info">
+<h3 class="photo-title">Бенто-торт «С днём рождения»</h3>
+<p class="photo-meta">Вес ~450 г · Начинка: Сникерс / Ягодный пломбир</p>
+</div>
+</article>
+
+<article class="photo-card">
+<div class="photo-wrap">
+<img src="img/cake2.jpg" alt="Бисквитный торт" loading="lazy">
+</div>
+<div class="photo-info">
+<h3 class="photo-title">Бисквитный торт с ягодами</h3>
+<p class="photo-meta">Вес 2 кг · Ванильный бисквит, крем-чиз, свежая ягода</p>
+</div>
+</article>
+
+<article class="photo-card">
+<div class="photo-wrap">
+<img src="img/cake3.jpg" alt="Кейк-боксы и десерты" loading="lazy">
+</div>
+<div class="photo-info">
+<h3 class="photo-title">Набор десертов / Кейк-бокс</h3>
+<p class="photo-meta">Пирожное картошка, мадлен и чизкейки на палочке</p>
+</div>
+</article>
+
+</div>
+
+<h2 class="section-title" id="price">📋 Прайс-лист</h2>
+<div class="price-grid">
+
+<div class="price-card">
+<h3>🎂 Торты</h3>
+<ul class="price-list">
+<li><div><span class="price-name">Бенто-торт (S)</span><span class="price-desc">~400–450 г, коробка с ложечкой и свечкой</span></div><span class="price-val">от 1 500 ₽</span></li>
+<li><div><span class="price-name">Бенто-макси (M)</span><span class="price-desc">~800–900 г, на компанию 4–6 человек</span></div><span class="price-val">от 2 400 ₽</span></li>
+<li><div><span class="price-name">Бисквитный торт</span><span class="price-desc">Цена за 1 кг (заказ от 1,5–2 кг)</span></div><span class="price-val">от 2 300 ₽/кг</span></li>
+</ul>
+</div>
+
+<div class="price-card">
+<h3>🧁 Десерты и наборы</h3>
+<ul class="price-list">
+<li><div><span class="price-name">Кейк-бокс</span><span class="price-desc">Торт в стаканчиках / боксе (2–4 шт.)</span></div><span class="price-val">от 1 400 ₽</span></li>
+<li><div><span class="price-name">Чизкейки на палочке</span><span class="price-desc">Набор от 4 шт., в бельгийском шоколаде</span></div><span class="price-val">от 1 200 ₽</span></li>
+<li><div><span class="price-name">Пирожное «Картошка» / Мадлен</span><span class="price-desc">Наборы в подарочной упаковке</span></div><span class="price-val">от 1 000 ₽</span></li>
+<li><div><span class="price-name">Зефирные цветы</span><span class="price-desc">Букеты и коробки ручной работы</span></div><span class="price-val">от 1 600 ₽</span></li>
+</ul>
+</div>
+
+</div>
+
+<h2 class="section-title" id="delivery">🚗 Условия заказа и доставка</h2>
+<div class="delivery-box">
+<ul>
+<li><strong>Срок заказа:</strong> бенто-торты — за 1–2 дня (иногда есть срочные в день обращения), большие торты — за 3–5 дней.</li>
+<li><strong>Самовывоз:</strong> Москва, м. Ясенево (бесплатно).</li>
+<li><strong>Доставка:</strong> ЦАО, ЗАО, ЮЗАО, ЮАО, Одинцово и Подольск ежедневно с 9:00 до 23:00.</li>
+<li><strong>Сложный декор:</strong> сахарная печать, ягоды не в сезон, фигурки и сложные рисунки рассчитываются отдельно.</li>
+</ul>
+</div>
+
+<footer>
+<a href="../" style="color:var(--primary-color);text-decoration:none;font-weight:500">XTAMSW.GITHUB.IO</a> · Домашняя кондитерская LIZA_CRISPY · Москва
+</footer>
+</div>
+
+<div class="lightbox" id="lightbox"><img src="" alt="Увеличенное фото"></div>
+
+<script>
+(function(){
+    const r = document.documentElement, b = document.getElementById('themeToggle');
+    function a(t) {
+        r.setAttribute('data-theme', t);
+        b.textContent = t === 'dark' ? '☀️' : '🌙';
+    }
+    b.addEventListener('click', () => {
+        const n = r.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        a(n);
+        localStorage.setItem('theme', n);
+    });
+    a(r.getAttribute('data-theme') || 'light');
+})();
+
+(function(){
+    const lb = document.getElementById('lightbox'), li = lb.querySelector('img');
+    document.querySelectorAll('.photo-card img').forEach(img => {
+        img.addEventListener('click', () => {
+            li.src = img.src;
+            lb.classList.add('open');
+        });
+    });
+    lb.addEventListener('click', () => lb.classList.remove('open'));
+})();
+</script>
+</body>
+</html>
+
