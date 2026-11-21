@@ -31,8 +31,17 @@ h1{margin:0 0 8px;font-size:28px;line-height:1.25}
 .btn-outline{background:transparent;color:var(--text-main);border-color:var(--border-color)}
 .btn-outline:hover{background:var(--btn-outline-hover)}
 .section-title{font-size:20px;margin:36px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--primary-color);display:inline-block;scroll-margin-top:var(--nav-offset)}
-.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
-.photo-card{background:var(--card-inner-bg);border:1px solid var(--border-color);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.carousel-wrap{position:relative}
+.portfolio-carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.portfolio-carousel::-webkit-scrollbar{display:none}
+.photo-card{flex:0 0 260px;scroll-snap-align:start;background:var(--card-inner-bg);border:1px solid var(--border-color);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.photo-card:hover{transform:translateY(-3px);box-shadow:var(--card-hover-shadow)}
+.carousel-btn{position:absolute;top:115px;width:36px;height:36px;border-radius:50%;border:1px solid var(--border-color);background:var(--nav-bg);color:var(--text-main);font-size:20px;line-height:1;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);box-shadow:var(--shadow);transition:background-color .2s,color .2s}
+.carousel-btn:hover{background:var(--primary-color);color:#fff;border-color:var(--primary-color)}
+.carousel-btn.prev{left:-10px}
+.carousel-btn.next{right:-10px}
+@media(max-width:600px){.photo-card{flex:0 0 78%}.carousel-btn{display:none}}
+
 .photo-card:hover{transform:translateY(-3px);box-shadow:var(--card-hover-shadow)}
 .photo-wrap{aspect-ratio:1/1;width:100%;background:var(--promo-bg);overflow:hidden;position:relative}
 .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
@@ -63,9 +72,10 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 <div class="container">
 <nav class="top-nav">
 <div class="nav-links">
-<a href="../">← На главную</a>
-<a href="#portfolio">📸 Портфолио</a>
-<a href="#price">📋 Прайс-лист</a>
+<a href="../index.html">← На главную</a>
+<a href="#price">💸 Цены</a>
+<a href="#portfolio">📸 Мои работы</a>
+<a href="#comments">💬 Отзывы</a>
 <a href="#delivery">🚗 Доставка</a>
 </div>
 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">🌙</button>
@@ -78,67 +88,389 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 <div class="promo-pill">🎁 Скидка <strong>10%</strong> на первый заказ по промокоду <span class="promo-code">CRISPY10</span></div>
 <div class="actions">
 <a href="tg://resolve?domain=liza_crispy" class="btn btn-primary">✈️ Заказать в Telegram (@liza_crispy)</a>
-<a href="https://flowwow.com" class="btn btn-outline" target="_blank" rel="noopener">🌸 Витрина на FlowWow</a>
+<a href="https://flowwow.com/shop/krispif-6014/" class="btn btn-outline" target="_blank" rel="noopener">🌸 Витрина на FlowWow</a>
 </div>
 </section>
 
-<h2 class="section-title" id="portfolio">📸 Примеры работ (Портфолио)</h2>
-<div class="portfolio-grid">
+<h2 class="section-title" id="price">💸 Цены</h2>
+<div class="carousel-wrap">
+    <button class="carousel-btn prev" type="button" aria-label="Назад">‹</button>
+    <div class="portfolio-carousel" id="portfolioCarousel">
 
+        <article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tseny1.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
 <article class="photo-card">
-<div class="photo-wrap">
-<img src="img/cake1.jpg" alt="Бенто-торт с надписью" loading="lazy">
-</div>
-<div class="photo-info">
-<h3 class="photo-title">Бенто-торт «С днём рождения»</h3>
-<p class="photo-meta">Вес ~450 г · Начинка: Сникерс / Ягодный пломбир</p>
-</div>
-</article>
-
+            <div class="photo-wrap">
+                <img src="img/tseny2.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
 <article class="photo-card">
-<div class="photo-wrap">
-<img src="img/cake2.jpg" alt="Бисквитный торт" loading="lazy">
-</div>
-<div class="photo-info">
-<h3 class="photo-title">Бисквитный торт с ягодами</h3>
-<p class="photo-meta">Вес 2 кг · Ванильный бисквит, крем-чиз, свежая ягода</p>
-</div>
-</article>
-
+            <div class="photo-wrap">
+                <img src="img/tseny3.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
 <article class="photo-card">
-<div class="photo-wrap">
-<img src="img/cake3.jpg" alt="Кейк-боксы и десерты" loading="lazy">
-</div>
-<div class="photo-info">
-<h3 class="photo-title">Набор десертов / Кейк-бокс</h3>
-<p class="photo-meta">Пирожное картошка, мадлен и чизкейки на палочке</p>
-</div>
-</article>
+            <div class="photo-wrap">
+                <img src="img/tseny4.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tseny5.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tseny6.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tseny7.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tseny8.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
 
+
+
+        <!-- Сюда добавляй сколько угодно новых <article class="photo-card"> -->
+
+    </div>
+    <button class="carousel-btn next" type="button" aria-label="Вперёд">›</button>
 </div>
 
-<h2 class="section-title" id="price">📋 Прайс-лист</h2>
-<div class="price-grid">
+<h2 class="section-title" id="portfolio">📸 Мои работы</h2>
+<div class="carousel-wrap">
+    <button class="carousel-btn prev" type="button" aria-label="Назад">‹</button>
+    <div class="portfolio-carousel" id="portfolioCarousel">
 
-<div class="price-card">
-<h3>🎂 Торты</h3>
-<ul class="price-list">
-<li><div><span class="price-name">Бенто-торт (S)</span><span class="price-desc">~400–450 г, коробка с ложечкой и свечкой</span></div><span class="price-val">от 1 500 ₽</span></li>
-<li><div><span class="price-name">Бенто-макси (M)</span><span class="price-desc">~800–900 г, на компанию 4–6 человек</span></div><span class="price-val">от 2 400 ₽</span></li>
-<li><div><span class="price-name">Бисквитный торт</span><span class="price-desc">Цена за 1 кг (заказ от 1,5–2 кг)</span></div><span class="price-val">от 2 300 ₽/кг</span></li>
-</ul>
+        <article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort1.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort2.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort3.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort4.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort5.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort6.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort7.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort8.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort9.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort10.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort11.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort12.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort13.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort14.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort15.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort16.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort17.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort18.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort19.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort20.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort21.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort22.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort23.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort24.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort25.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort26.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort27.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort28.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort29.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort30.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/tort31.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+
+
+
+        <!-- Сюда добавляй сколько угодно новых <article class="photo-card"> -->
+
+    </div>
+    <button class="carousel-btn next" type="button" aria-label="Вперёд">›</button>
 </div>
 
-<div class="price-card">
-<h3>🧁 Десерты и наборы</h3>
-<ul class="price-list">
-<li><div><span class="price-name">Кейк-бокс</span><span class="price-desc">Торт в стаканчиках / боксе (2–4 шт.)</span></div><span class="price-val">от 1 400 ₽</span></li>
-<li><div><span class="price-name">Чизкейки на палочке</span><span class="price-desc">Набор от 4 шт., в бельгийском шоколаде</span></div><span class="price-val">от 1 200 ₽</span></li>
-<li><div><span class="price-name">Пирожное «Картошка» / Мадлен</span><span class="price-desc">Наборы в подарочной упаковке</span></div><span class="price-val">от 1 000 ₽</span></li>
-<li><div><span class="price-name">Зефирные цветы</span><span class="price-desc">Букеты и коробки ручной работы</span></div><span class="price-val">от 1 600 ₽</span></li>
-</ul>
-</div>
+<h2 class="section-title" id="comments">💬 Отзывы</h2>
+<div class="carousel-wrap">
+    <button class="carousel-btn prev" type="button" aria-label="Назад">‹</button>
+    <div class="portfolio-carousel" id="portfolioCarousel">
 
+        <article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv1.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv2.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv3.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv4.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv5.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv6.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv7.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv8.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv9.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv10.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv11.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv12.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv13.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv14.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv15.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv16.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv17.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv18.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv19.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv20.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv21.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv22.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv23.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv24.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv25.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv26.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv27.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv28.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+<article class="photo-card">
+            <div class="photo-wrap">
+                <img src="img/otzyv29.jpg" alt="Бенто-торт с надписью" loading="lazy">
+            </div>
+        </article>
+
+
+        <!-- Сюда добавляй сколько угодно новых <article class="photo-card"> -->
+
+    </div>
+    <button class="carousel-btn next" type="button" aria-label="Вперёд">›</button>
 </div>
 
 <h2 class="section-title" id="delivery">🚗 Условия заказа и доставка</h2>
@@ -183,6 +515,17 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
     });
     lb.addEventListener('click', () => lb.classList.remove('open'));
 })();
+(function(){
+    const c = document.getElementById('portfolioCarousel');
+    if (!c) return;
+    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+        c.scrollBy({ left: -280, behavior: 'smooth' });
+    });
+    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+        c.scrollBy({ left: 280, behavior: 'smooth' });
+    });
+})();
+
 </script>
 </body>
 </html>
