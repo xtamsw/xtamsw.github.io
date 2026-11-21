@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XTAMSW — приложения, игры и PWA</title>
-	<meta name="description" content="Приложения и игры от XTAMSW: живые обои, симулятор метро, личный помощник, планер и бюджет в формате PWA. RuStore и GitHub.">
+    <title>XTAMSW и LIZA_CRISPY — приложения, игры, PWA, торты и десерты</title>
+	<meta name="description" content="Приложения и игры от XTAMSW и торты от LIZA_CRISPY: живые обои, симулятор метро, личный помощник, планер и бюджет в формате PWA. RuStore и GitHub. Торты, зефирные цветы и десерты.">
     <style>
         :root {
 			color-scheme: light;
@@ -33,6 +33,17 @@
 			--changelog-border: #f3f4f6;
 			--card-hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 			--nav-offset: 100px;
+            --cake-color: #ec4899;
+            --cake-hover: #db2777;
+            --cake-bg-from: #fdf2f8;
+            --cake-bg-to: #fff1f2;
+            --cake-border: #fbcfe8;
+            --dev-bg-from: #eff6ff;
+            --dev-bg-to: #f8fafc;
+            --dev-border: #bfdbfe;
+            --promo-bg: #fce7f3;
+            --promo-text: #9d174d;
+
         }
 
 		[data-theme="dark"] {
@@ -60,6 +71,17 @@
 			--contact-hover-bg: #475569;
 			--changelog-border: #334155;
 			--card-hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            --cake-color: #f472b6;
+            --cake-hover: #ec4899;
+            --cake-bg-from: #2d1625;
+            --cake-bg-to: #1e1b2e;
+            --cake-border: #50213d;
+            --dev-bg-from: #172554;
+            --dev-bg-to: #1e293b;
+            --dev-border: #1e40af;
+            --promo-bg: #50213d;
+            --promo-text: #fbcfe8;
+
 		}
 
         * { box-sizing: border-box; }
@@ -107,6 +129,124 @@
 		html {
 			scroll-behavior: smooth;
 		}
+        /* === Витрина услуг (Два главных блока) === */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 36px;
+            scroll-margin-top: var(--nav-offset);
+        }
+
+        .showcase-card {
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            scroll-margin-top: var(--nav-offset);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .showcase-dev {
+            background: linear-gradient(145deg, var(--dev-bg-from) 0%, var(--dev-bg-to) 100%);
+            border-color: var(--dev-border);
+        }
+
+        .showcase-cake {
+            background: linear-gradient(145deg, var(--cake-bg-from) 0%, var(--cake-bg-to) 100%);
+            border-color: var(--cake-border);
+        }
+
+        .showcase-badge {
+            display: inline-block;
+            align-self: flex-start;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .badge-dev { background: rgba(59, 130, 246, 0.15); color: var(--primary-color); }
+        .badge-cake { background: var(--promo-bg); color: var(--promo-text); }
+
+        .showcase-card h2 {
+            margin: 0 0 10px 0;
+            font-size: 21px;
+            line-height: 1.3;
+        }
+
+        .showcase-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0 0 14px 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 18px 0;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            line-height: 1.45;
+        }
+
+        .feature-list li::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .showcase-dev .feature-list li::before { content: "⚡"; }
+        .showcase-cake .feature-list li::before { content: "🍰"; }
+
+        .promo-box {
+            background: var(--card-bg);
+            border: 1px dashed var(--cake-color);
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 13px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .promo-code {
+            display: inline-block;
+            background: var(--promo-bg);
+            color: var(--promo-text);
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .showcase-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cake {
+            background-color: var(--cake-color);
+            color: #ffffff;
+        }
+        .btn-cake:hover {
+            background-color: var(--cake-hover);
+        }
+
+        @media (max-width: 720px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .section-title {
             font-size: 20px;
@@ -421,8 +561,8 @@
 		document.documentElement.setAttribute('data-theme', t);
 	})();
 	</script>
-	<meta property="og:title" content="XTAMSW — разработка приложений и игр">
-	<meta property="og:description" content="Приложения и игры для Android: живые обои, симулятор метро, личный помощник и PWA.">
+	<meta property="og:title" content="XTAMSW и LIZA_CRISPY — приложения и игры, а также домашние торты и десерты">
+	<meta property="og:description" content="Приложения, удобные веб-сервисы и игры, а также потрясающие домашние торты и десерты на заказ">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://xtamsw.github.io/">
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
@@ -432,22 +572,63 @@
     <div class="container">
 		<nav class="top-nav">
 			<div class="nav-links">
+				<a href="#services">💻 Услуги</a>
+				<a href="#cakes">🧁 Торты</a>
 				<a href="#apps">📱 Приложения</a>
 				<a href="#games">🎮 Игры</a>
 				<a href="#pwa">🌐 PWA</a>
-				<a href="#support_ruble">💛 Поддержать рублём</a>
 				<a href="#contacts">✈️ Контакты</a>
 			</div>
 			<button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">🌙</button>
 		</nav>
 		
-        <header>
-            <h1>XTAMSW</h1>
-            <p class="subtitle">Разработка приложений и игр</p>
-			<p>
-				Если у вас есть пожелания, предложения или идеи по доработке приложений или игр или по созданию новых - пишите в <a href="#contacts">Telegram</a>. С радостью воплощу ваши идеи в жизнь. 💛
-			</p>
+                <header>
+            <h1>XTAMSW и LIZA_CRISPY</h1>
+            <p class="subtitle">
+                Приложения, удобные веб-сервисы и игры, а также потрясающие домашние торты и десерты на заказ 💛
+            </p>
         </header>
+
+        <div class="showcase-grid" id="services">
+            <section class="showcase-card showcase-dev">
+                <span class="showcase-badge badge-dev">💻 Разработка под ключ</span>
+                <h2>Приложения и сайты для вас и вашего бизнеса</h2>
+                <p>
+                    Помогу превратить вашу идею в работающий продукт — быстро, понятно и без лишней бюрократии.
+                </p>
+                <ul class="feature-list">
+                    <li><strong>Android-приложения:</strong> учёт заказов, клиентов, финансов, каталоги и личные помощники (с публикацией в RuStore).</li>
+                    <li><strong>Сайты-визитки и лендинги:</strong> аккуратные страницы для мастеров, услуг и малого бизнеса.</li>
+                    <li><strong>Веб-приложения (PWA):</strong> работают прямо в браузере на iOS и Android и ставится на экран как обычное приложение.</li>
+                    <li><strong>Простые 2D-игры:</strong> головоломки, симуляторы и мини-игры под ваши задачи.</li>
+                </ul>
+                <div class="showcase-actions">
+                    <a href="tg://resolve?domain=xtamsw" class="btn btn-primary" rel="noopener">✈️ Написать в Telegram</a>
+                    <a href="#apps" class="btn btn-outline">Примеры работ</a>
+                </div>
+            </section>
+
+            <section class="showcase-card showcase-cake" id="cakes">
+                <span class="showcase-badge badge-cake">🧁 LIZA_CRISPY · Москва</span>
+                <h2>Домашние торты и десерты на заказ</h2>
+                <p>
+                    Готовим с любовью из натуральных ингредиентов к праздникам, дням рождения или просто к чаю.
+                </p>
+                <ul class="feature-list">
+                    <li><strong>Ассортимент:</strong> бисквитные и бенто-торты, кейк-боксы, чизкейки на палочке, пирожное картошка, мадлен и зефирные цветы.</li>
+                    <li><strong>Самовывоз:</strong> Москва, м. Ясенево.</li>
+                    <li><strong>Доставка:</strong> ЦАО, ЗАО, ЮЗАО, ЮАО, Одинцово и Подольск (с 9:00 до 23:00).</li>
+                </ul>
+                <div class="promo-box">
+                    🎁 Скидка <strong>10%</strong> на первый заказ по промокоду <span class="promo-code">CRISPY10</span>
+                </div>
+                <div class="showcase-actions">
+                    <a href="tg://resolve?domain=liza_crispy" class="btn btn-cake" rel="noopener">🧁 Канал и заказ @liza_crispy</a>
+<a href="https://flowwow.com/shop/krispif-6014/" class="btn btn-primary" target="_blank" rel="noopener">Витрина на FlowWow</a>
+                </div>
+            </section>
+        </div>
+
 
         <!-- Проекты -->
         <h2 class="section-title" id="apps">📱 Мои приложения</h2>
@@ -611,13 +792,12 @@
         <!-- Контакты -->
         <h2 class="section-title" id="contacts">✈️ Telegram</h2>
 		<div class="contacts-grid">
-            <a href="https://t.me/liza_crispy" class="btn btn-primary" target="_blank" rel="noopener">🧁 ТОРТЫ И ДЕСЕРТЫ НА ЗАКАЗ - @liza_crispy 🧁</a>
+            <a href="tg://resolve?domain=liza_crispy" class="btn btn-cake" rel="noopener">🧁 ТОРТЫ И ДЕСЕРТЫ НА ЗАКАЗ - @liza_crispy 🧁</a>
         </div>
         <div class="contacts-grid">
-            <a href="https://t.me/xtamsw" class="contact-item" target="_blank" rel="noopener">ЛС - @xtamsw</a>
-            <a href="https://t.me/xtamsw_posts" class="contact-item" target="_blank" rel="noopener">Канал (личный) - @xtamsw_posts</a>
-            <a href="https://t.me/xtamsw_music" class="contact-item" target="_blank" rel="noopener">Канал (музыка) - @xtamsw_music</a>
-            <a href="https://t.me/xtamsw_apk" class="contact-item" target="_blank" rel="noopener">Канал (приложения) - @xtamsw_apk</a>
+            <a href="tg://resolve?domain=xtamsw" class="contact-item" rel="noopener">ЛС - @xtamsw</a>
+            <a href="tg://resolve?domain=xtamsw_posts" class="contact-item" rel="noopener">Канал (личный) - @xtamsw_posts</a>
+            <a href="tg://resolve?domain=xtamsw_apk" class="contact-item" rel="noopener">Канал (приложения) - @xtamsw_apk</a>
         </div>
         <h2 class="section-title">Другие соцсети</h2>
         <div class="contacts-grid">
