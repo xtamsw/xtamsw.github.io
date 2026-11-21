@@ -45,6 +45,23 @@ h1{margin:0 0 8px;font-size:28px;line-height:1.25}
 .photo-card:hover{transform:translateY(-3px);box-shadow:var(--card-hover-shadow)}
 .photo-wrap{aspect-ratio:1/1;width:100%;background:var(--promo-bg);overflow:hidden;position:relative}
 .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.spoiler{background:var(--card-inner-bg);border:1px solid var(--border-color);border-radius:12px;padding:0 16px}
+.spoiler-summary{display:flex;align-items:center;gap:10px;list-style:none;cursor:pointer;user-select:none;padding:16px 4px;font-weight:600;color:var(--text-main)}
+.spoiler-summary::-webkit-details-marker{display:none}
+.spoiler-summary::marker{content:''}
+.spoiler-hint{font-size:13px;font-weight:400;color:var(--text-muted)}
+.spoiler-label-open{display:none}
+.spoiler[open] .spoiler-label-closed{display:none}
+.spoiler[open] .spoiler-label-open{display:inline}
+.spoiler-arrow{margin-left:auto;color:var(--primary-color);font-size:18px;line-height:1;transition:transform .2s}
+.spoiler[open] .spoiler-arrow{transform:rotate(180deg)}
+.spoiler[open] .spoiler-summary{border-bottom:1px dashed var(--border-color);margin-bottom:16px}
+.spoiler .price-gallery{padding-bottom:16px}
+.price-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.price-gallery .photo-card{flex:none;width:100%;cursor:zoom-in}
+.price-gallery .photo-wrap{aspect-ratio:auto}
+.price-gallery .photo-wrap img{height:auto;object-fit:contain}
+@media(max-width:600px){.price-gallery{grid-template-columns:1fr}}
 .photo-info{padding:14px}
 .photo-title{font-weight:600;font-size:16px;margin:0 0 4px}
 .photo-meta{font-size:13px;color:var(--text-muted);margin:0}
@@ -60,9 +77,17 @@ h1{margin:0 0 8px;font-size:28px;line-height:1.25}
 .delivery-box{background:var(--card-inner-bg);border:1px solid var(--border-color);border-radius:12px;padding:20px;font-size:14px;scroll-margin-top:var(--nav-offset)}
 .delivery-box ul{margin:8px 0 0;padding-left:20px}
 .delivery-box li{margin-bottom:6px}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:60px 76px;z-index:100;cursor:zoom-out}
 .lightbox.open{display:flex}
-.lightbox img{max-width:95vw;max-height:88vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.lightbox img{max-width:95vw;max-height:min(88vh,calc(100vh - 140px));border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.5);cursor:default}
+.lightbox-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff;font-size:28px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);z-index:2;transition:background-color .2s}
+.lightbox-btn[hidden]{display:none}
+.lightbox-btn:hover{background:var(--primary-color);border-color:var(--primary-color)}
+.lightbox-btn.prev{left:16px}
+.lightbox-btn.next{right:16px}
+.lightbox-btn.close{top:16px;right:16px;transform:none;font-size:24px}
+.lightbox-counter{position:absolute;top:18px;left:50%;transform:translateX(-50%);color:#fff;font-size:14px;font-weight:600;background:rgba(0,0,0,.45);padding:4px 12px;border-radius:20px;z-index:2}
+@media(max-width:600px){.lightbox{padding:54px 12px 74px}.lightbox img{max-height:72vh}.lightbox-btn{top:auto;bottom:16px;transform:none;width:42px;height:42px}.lightbox-btn.prev{left:calc(50% - 52px)}.lightbox-btn.next{right:calc(50% - 52px)}.lightbox-btn.close{top:12px;bottom:auto;right:12px}}
 footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color);font-size:13px;color:var(--text-muted);text-align:center}
 @media(max-width:600px){.nav-links{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}.nav-links::-webkit-scrollbar{display:none}.container{padding:20px 16px}h1{font-size:24px}}
 </style>
@@ -72,7 +97,7 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 <div class="container">
 <nav class="top-nav">
 <div class="nav-links">
-<a href="../">← На главную</a>
+<a href="../index.html">🏠 На главную</a>
 <a href="#price">💸 Цены</a>
 <a href="#portfolio">📸 Мои работы</a>
 <a href="#comments">💬 Отзывы</a>
@@ -89,62 +114,64 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 <div class="actions">
 <a href="tg://resolve?domain=liza_crispy" class="btn btn-primary">✈️ Заказать в Telegram (@liza_crispy)</a>
 <a href="https://flowwow.com/shop/krispif-6014/" class="btn btn-outline" target="_blank" rel="noopener">🌸 Витрина на FlowWow</a>
+<a href="https://max.ru/u/f9LHodD0cOJ5PbtaSdyZod3vfFdow56_m4BgdpTqvUx1XxkyhVHfDUs97NU" class="btn btn-outline" target="_blank" rel="noopener">💬 MAX</a>
 </div>
 </section>
 
 <h2 class="section-title" id="price">💸 Цены</h2>
-<div class="carousel-wrap">
-    <button class="carousel-btn prev" type="button" aria-label="Назад">‹</button>
-    <div class="portfolio-carousel" id="portfolioCarousel">
+<details class="spoiler" id="priceSpoiler">
+<summary class="spoiler-summary">
+    <span class="spoiler-label-closed">📋 Показать цены</span>
+    <span class="spoiler-label-open">📋 Скрыть цены</span>
+    <span class="spoiler-arrow" aria-hidden="true">▾</span>
+</summary>
+<div class="price-gallery">
 
-        <article class="photo-card">
-            <div class="photo-wrap">
-                <img src="img/tseny1.jpg" alt="Бенто-торт с надписью" loading="lazy">
-            </div>
-        </article>
-<article class="photo-card">
-            <div class="photo-wrap">
-                <img src="img/tseny2.jpg" alt="Бенто-торт с надписью" loading="lazy">
-            </div>
-        </article>
-<article class="photo-card">
-            <div class="photo-wrap">
-                <img src="img/tseny3.jpg" alt="Бенто-торт с надписью" loading="lazy">
-            </div>
-        </article>
-<article class="photo-card">
-            <div class="photo-wrap">
-                <img src="img/tseny4.jpg" alt="Бенто-торт с надписью" loading="lazy">
-            </div>
-        </article>
-<article class="photo-card">
-            <div class="photo-wrap">
-                <img src="img/tseny5.jpg" alt="Бенто-торт с надписью" loading="lazy">
-            </div>
-        </article>
-<article class="photo-card">
-            <div class="photo-wrap">
-                <img src="img/tseny6.jpg" alt="Бенто-торт с надписью" loading="lazy">
-            </div>
-        </article>
-<article class="photo-card">
-            <div class="photo-wrap">
-                <img src="img/tseny7.jpg" alt="Бенто-торт с надписью" loading="lazy">
-            </div>
-        </article>
-<article class="photo-card">
-            <div class="photo-wrap">
-                <img src="img/tseny8.jpg" alt="Бенто-торт с надписью" loading="lazy">
-            </div>
-        </article>
+    <article class="photo-card">
+        <div class="photo-wrap">
+            <img src="img/tseny1.jpg" alt="Прайс-лист LIZA_CRISPY" loading="lazy">
+        </div>
+    </article>
+    <article class="photo-card">
+        <div class="photo-wrap">
+            <img src="img/tseny2.jpg" alt="Прайс-лист LIZA_CRISPY" loading="lazy">
+        </div>
+    </article>
+    <article class="photo-card">
+        <div class="photo-wrap">
+            <img src="img/tseny3.jpg" alt="Прайс-лист LIZA_CRISPY" loading="lazy">
+        </div>
+    </article>
+    <article class="photo-card">
+        <div class="photo-wrap">
+            <img src="img/tseny4.jpg" alt="Прайс-лист LIZA_CRISPY" loading="lazy">
+        </div>
+    </article>
+    <article class="photo-card">
+        <div class="photo-wrap">
+            <img src="img/tseny5.jpg" alt="Прайс-лист LIZA_CRISPY" loading="lazy">
+        </div>
+    </article>
+    <article class="photo-card">
+        <div class="photo-wrap">
+            <img src="img/tseny6.jpg" alt="Прайс-лист LIZA_CRISPY" loading="lazy">
+        </div>
+    </article>
+    <article class="photo-card">
+        <div class="photo-wrap">
+            <img src="img/tseny7.jpg" alt="Прайс-лист LIZA_CRISPY" loading="lazy">
+        </div>
+    </article>
+    <article class="photo-card">
+        <div class="photo-wrap">
+            <img src="img/tseny8.jpg" alt="Прайс-лист LIZA_CRISPY" loading="lazy">
+        </div>
+    </article>
 
+    <!-- Сюда добавляй сколько угодно новых <article class="photo-card"> -->
 
-
-        <!-- Сюда добавляй сколько угодно новых <article class="photo-card"> -->
-
-    </div>
-    <button class="carousel-btn next" type="button" aria-label="Вперёд">›</button>
 </div>
+</details>
 
 <h2 class="section-title" id="portfolio">📸 Мои работы</h2>
 <div class="carousel-wrap">
@@ -318,7 +345,7 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 <h2 class="section-title" id="comments">💬 Отзывы</h2>
 <div class="carousel-wrap">
     <button class="carousel-btn prev" type="button" aria-label="Назад">‹</button>
-    <div class="portfolio-carousel" id="portfolioCarousel">
+    <div class="portfolio-carousel" id="commentsCarousel">
 
         <article class="photo-card">
             <div class="photo-wrap">
@@ -488,7 +515,13 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 </footer>
 </div>
 
-<div class="lightbox" id="lightbox"><img src="" alt="Увеличенное фото"></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+<button class="lightbox-btn prev" type="button" aria-label="Предыдущее фото">‹</button>
+<img src="" alt="Увеличенное фото">
+<button class="lightbox-btn next" type="button" aria-label="Следующее фото">›</button>
+<button class="lightbox-btn close" type="button" aria-label="Закрыть">×</button>
+<div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
 
 <script>
 (function(){
@@ -506,23 +539,72 @@ footer{margin-top:36px;padding-top:18px;border-top:1px solid var(--border-color)
 })();
 
 (function(){
-    const lb = document.getElementById('lightbox'), li = lb.querySelector('img');
+    const lb = document.getElementById('lightbox');
+    const li = lb.querySelector('img');
+    const counter = document.getElementById('lightboxCounter');
+    const prevBtn = lb.querySelector('.lightbox-btn.prev');
+    const nextBtn = lb.querySelector('.lightbox-btn.next');
+    const closeBtn = lb.querySelector('.lightbox-btn.close');
+    let group = [], index = 0, touchX = null;
+
+    function show(i){
+        if (!group.length) return;
+        index = (i + group.length) % group.length;
+        const img = group[index];
+        li.src = img.src;
+        li.alt = img.alt;
+        counter.textContent = group.length > 1 ? (index + 1) + ' / ' + group.length : '';
+        prevBtn.hidden = nextBtn.hidden = group.length < 2;
+        [-1, 1].forEach(d => {
+            const neighbor = group[(index + d + group.length) % group.length];
+            if (neighbor) new Image().src = neighbor.src;
+        });
+    }
+    function step(d){ show(index + d); }
+
     document.querySelectorAll('.photo-card img').forEach(img => {
-        img.addEventListener('click', () => {
-            li.src = img.src;
+        img.addEventListener('click', e => {
+            e.stopPropagation();
+            const section = img.closest('.price-gallery, .portfolio-carousel');
+            group = Array.from(section.querySelectorAll('.photo-card img'));
+            show(group.indexOf(img));
             lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
         });
     });
-    lb.addEventListener('click', () => lb.classList.remove('open'));
+
+    function close(){
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    prevBtn.addEventListener('click', e => { e.stopPropagation(); step(-1); });
+    nextBtn.addEventListener('click', e => { e.stopPropagation(); step(1); });
+    closeBtn.addEventListener('click', e => { e.stopPropagation(); close(); });
+    li.addEventListener('click', e => e.stopPropagation());
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowLeft') step(-1);
+        else if (e.key === 'ArrowRight') step(1);
+    });
+    lb.addEventListener('touchstart', e => { touchX = e.changedTouches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', e => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+        touchX = null;
+    }, {passive:true});
 })();
 (function(){
-    const c = document.getElementById('portfolioCarousel');
-    if (!c) return;
-    document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
-        c.scrollBy({ left: -280, behavior: 'smooth' });
-    });
-    document.querySelector('.carousel-btn.next').addEventListener('click', () => {
-        c.scrollBy({ left: 280, behavior: 'smooth' });
+    document.querySelectorAll('.carousel-wrap').forEach(wrap => {
+        const c = wrap.querySelector('.portfolio-carousel');
+        if (!c) return;
+        const step = () => c.clientWidth * 0.9;
+        const prev = wrap.querySelector('.carousel-btn.prev');
+        const next = wrap.querySelector('.carousel-btn.next');
+        if (prev) prev.addEventListener('click', () => c.scrollBy({ left: -step(), behavior: 'smooth' }));
+        if (next) next.addEventListener('click', () => c.scrollBy({ left: step(), behavior: 'smooth' }));
     });
 })();
 
